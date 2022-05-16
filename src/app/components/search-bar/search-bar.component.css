@@ -1,0 +1,15 @@
+.search-bar {
+    border-radius: 0.10rem;
+    width: 30rem;
+}
+
+input {
+    width: 80%;
+    height: 100%;
+    font-size: 14px;
+    border-radius: 0rem;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
