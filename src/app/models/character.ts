@@ -1,7 +1,4 @@
-interface Thumbnail {
-  path: string;
-  extension: string;
-}
+import { Events, Stories, Thumbnail, Url } from './shared_models';
 
 interface ComicSummary {
   resourceURI: string;
@@ -25,36 +22,6 @@ interface Series {
   collectionURI: string;
   items: EventSummary[];
   returned: number;
-}
-
-interface StorySummary {
-  resourceURI: string;
-  name: string;
-  type: string;
-}
-
-interface Stories {
-  available: number;
-  collectionURI: string;
-  items: StorySummary[];
-  returned: number;
-}
-
-interface SeriesSummary {
-  resourceURI: string;
-  name: string;
-}
-
-interface Events {
-  available: number;
-  collectionURI: string;
-  items: SeriesSummary[];
-  returned: number;
-}
-
-interface Url {
-  type: string;
-  url: string;
 }
 
 export interface Character {
