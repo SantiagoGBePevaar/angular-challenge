@@ -3,32 +3,31 @@ export interface Url {
   url: string;
 }
 
-export interface Events {
-  available: number;
-  collectionURI: string;
-  items: any[];
-  returned: number;
-}
-
-export interface SeriesSummary {
-  resourceURI: string;
-  name: string;
-}
-
-export interface Stories {
-  available: number;
-  collectionURI: string;
-  items: StorySummary[];
-  returned: number;
-}
-
-export interface StorySummary {
-  resourceURI: string;
-  name: string;
-  type: string;
-}
-
 export interface Thumbnail {
   path: string;
   extension: string;
+}
+
+export interface GenericData<T> {
+  available: number;
+  collectionURI: string;
+  items: T[];
+  returned: number;
+}
+
+export interface Data {
+  resourceURI: string;
+  name: string;
+}
+
+export interface DataRole {
+  resourceURI: string;
+  name: string;
+  role: string;
+}
+
+export interface DataType {
+  resourceURI: string;
+  name: string;
+  type: string;
 }

@@ -6,3 +6,16 @@
 .comic-name {
     margin: 0px;
 }
+
+.story-content {
+    overflow: hidden;
+    max-height: 0px;
+    transition: max-height 1s;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    min-width: 80%;
+}

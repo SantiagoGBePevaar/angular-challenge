@@ -6,7 +6,8 @@
             <h1 class="title text-gray-600  ">{{character.name}}</h1>
             <p class="text-xs md:text-base">{{character.description.length == 0 ? 'description not available' :
                 character.description}}</p>
-            <button class="bg-red-600 p-2 px-4 text-white rounded shadow-red-700 shadow-md">VIEW MORE</button>
+            <button class="bg-red-600 p-2 px-4 text-white rounded shadow-red-700 shadow-md" (click)="openDialog()">VIEW
+                MORE</button>
         </div>
     </div>
     <div class="w-full p-6 pt-6">

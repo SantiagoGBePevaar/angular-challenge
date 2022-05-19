@@ -11,3 +11,13 @@ h1, h2, button {
 h1,h2,p {
     margin-bottom: 0.75rem;
 }
+
+.mat-dialog-container {
+    background: white !important;
+    padding: 0px !important;
+    border-radius: 20px;
+}
+
+.cdk-overlay-pane {
+    width: 80vw !important;
+}

@@ -1,60 +1,11 @@
-import { Events, Stories, Thumbnail, Url } from './shared_models';
-
-interface TextObject {
-  type: string;
-  language: string;
-  text: string;
-}
-
-interface Series {
-  resourceURI: string;
-  name: string;
-}
-
-interface Variant {
-  resourceURI: string;
-  name: string;
-}
-
-interface Date {
-  type: string;
-  date: any;
-}
-
-interface Price {
-  type: string;
-  price: number;
-}
-
-interface Image {
-  path: string;
-  extension: string;
-}
-
-interface Creator {
-  resourceURI: string;
-  name: string;
-  role: string;
-}
-
-interface Creators {
-  available: number;
-  collectionURI: string;
-  items: Creator[];
-  returned: number;
-}
-
-interface Character {
-  resourceURI: string;
-  name: string;
-}
-
-interface Characters {
-  available: number;
-  collectionURI: string;
-  items: Character[];
-  returned: number;
-}
+import {
+  Data,
+  DataRole,
+  DataType,
+  GenericData,
+  Thumbnail,
+  Url,
+} from './shared_models';
 
 export interface Comic {
   id: number;
@@ -63,7 +14,7 @@ export interface Comic {
   issueNumber: number;
   variantDescription: string;
   description: string;
-  modified: any;
+  modified: string;
   isbn: string;
   upc: string;
   diamondCode: string;
@@ -74,16 +25,32 @@ export interface Comic {
   textObjects: TextObject[];
   resourceURI: string;
   urls: Url[];
-  series: Series;
-  variants: Variant[];
+  series: Data;
+  variants: Data[];
   collections: any[];
-  collectedIssues: any[];
-  dates: Date[];
+  collectedIssues: Data[];
+  dates: DateElement[];
   prices: Price[];
   thumbnail: Thumbnail;
-  images: Image[];
-  creators: Creators;
-  characters: Characters;
-  stories: Stories;
-  events: Events;
+  images: Thumbnail[];
+  creators: GenericData<DataRole>;
+  characters: GenericData<Data>;
+  stories: GenericData<DataType>;
+  events: GenericData<Data>;
+}
+
+interface DateElement {
+  type: string;
+  date: Date;
+}
+
+interface Price {
+  type: string;
+  price: number;
+}
+
+export interface TextObject {
+  type: string;
+  language: string;
+  text: string;
 }

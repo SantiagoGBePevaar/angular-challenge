@@ -1,0 +1,48 @@
+<div class="bg-white text-black shadow-lg shadow-gray-300">
+    <div class="flex flex-row-reverse">
+        <img src="assets/btn-close.png" class="relative top-6 right-6 cursor-pointer" width="35" height="35"
+            (click)="closeDialog()" />
+    </div>
+
+    <div class="flex">
+        <div class="w-2/5 flex justify-center">
+            <img class=" w-3/5 m-8 shadow-lg shadow-gray-400"
+                [src]="character.thumbnail.path +  '/standard_amazing.' + character.thumbnail.extension" />
+        </div>
+        <div class="p-6 w-3/5">
+            <div class=" mr-8 mt-4">
+                <h1 class="title text-gray-600">{{character.name}}</h1>
+                <p class="text-xs md:text-base">{{character.description.length == 0 ? 'description not available'
+                    :
+                    character.description}}</p>
+            </div>
+            <div class="w-full pt-6">
+                <h1 class="text-2xl pb-2">Related Stories</h1>
+                <div class="grid grid-cols-2 gap-6" *ngIf="character.stories.items.length > 0">
+                    <h2 class="h-12 text-sm comic-name text-center cursor-pointer"
+                        *ngFor='let story of character.stories.items.slice(0,4)' (click)="loadStory(story.resourceURI)">
+                        {{story.name}}
+                    </h2>
+                </div>
+                <h2 class="h-12 text-center" *ngIf="character.stories.items.length == 0">Not comics related found
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="story-content" #storyContent>
+        <div class="content">
+            <h1 class="text-2xl">{{ (story | async)?.title }}</h1>
+            <h2>{{ (story | async)?.description }}</h2>
+
+            <h1 class="text-2xl">Characters</h1>
+            <div class="grid grid-cols-2 gap-6" *ngIf="(story | async)?.characters?.items">
+                <h2 class="h-12 text-sm comic-name text-center cursor-pointer"
+                    *ngFor='let character of (story | async)?.characters?.items?.slice(0,4)'>
+                    {{character.name}}
+                </h2>
+            </div>
+        </div>
+
+    </div>
+</div>
