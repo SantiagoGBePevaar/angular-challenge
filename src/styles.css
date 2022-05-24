@@ -21,3 +21,8 @@ h1,h2,p {
 .cdk-overlay-pane {
     width: 80vw !important;
 }
+
+.title {
+    font-family: 'Koulen', cursive;
+    font-size: 30px;
+}

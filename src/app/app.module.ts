@@ -15,6 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { SearchBarComponent } from './components/shared/search-bar/search-bar.component';
 import { ToolbarComponent } from './components/shared/toolbar/toolbar.component';
+import { ComicsComponent } from './components/comics/comics.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ToolbarComponent } from './components/shared/toolbar/toolbar.component'
     CharacterCardComponent,
     FavoritesCardComponent,
     CharacterDetail,
+    ComicsComponent,
   ],
   imports: [
     BrowserModule,

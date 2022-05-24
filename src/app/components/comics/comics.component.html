@@ -1,0 +1,22 @@
+<div class="bg-white text-black shadow-lg shadow-gray-300">
+    <div class="flex flex-row-reverse">
+        <img src="assets/btn-close.png" class="relative top-6 right-6 cursor-pointer" width="35" height="35"
+            (click)="closeDialog()" />
+    </div>
+
+    <div class="flex">
+        <div class="w-2/5 flex justify-center">
+            <img class=" w-3/5 m-8 shadow-lg shadow-gray-400"
+                [src]="(comic | async)?.thumbnail?.path +  '/standard_amazing.' + (comic | async)?.thumbnail?.extension" />
+        </div>
+        <div class="p-6 w-3/5">
+            <div class=" mr-8 mt-4">
+                <h1 class="title text-gray-600">{{(comic | async)?.title}}</h1>
+                <p class="text-xs md:text-base">{{(comic | async)?.description?.length == 0 ? 'description not
+                    available'
+                    :
+                    (comic | async)?.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

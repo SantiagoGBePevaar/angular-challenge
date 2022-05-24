@@ -5,6 +5,9 @@ import { Character } from './../../../models/character';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { StoriesService } from 'src/app/services/stories.service';
 import { Observable } from 'rxjs';
+import { ComicsComponent } from '../../comics/comics.component';
+import { Comic } from 'src/app/models/comic';
+import { Data } from 'src/app/models/shared_models';
 
 @Component({
   selector: 'app-character-card',
@@ -16,14 +19,15 @@ export class CharacterCardComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
-
-  onClick() {
-    console.log('click');
-  }
-
   openDialog() {
     this.dialog.open(CharacterDetail, {
       data: this.character,
+    });
+  }
+
+  openComic(comic: Data) {
+    this.dialog.open(ComicsComponent, {
+      data: comic,
     });
   }
 }

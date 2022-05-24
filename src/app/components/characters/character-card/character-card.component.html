@@ -13,7 +13,8 @@
     <div class="w-full p-6 pt-6">
         <h1 class="text-2xl pb-2">Related comics</h1>
         <div class="grid grid-cols-2 gap-6" *ngIf="character.comics.items.length > 0">
-            <h2 class="h-12 text-sm comic-name flex " *ngFor='let comic of character.comics.items.slice(0,4)'>
+            <h2 class="h-12 text-sm comic-name flex " *ngFor='let comic of character.comics.items.slice(0,4)'
+                (click)="openComic(comic)">
                 {{comic.name}}
             </h2>
         </div>
