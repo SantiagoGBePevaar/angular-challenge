@@ -1,3 +1,8 @@
-<div class="grid grid-cols-2">
-    <app-character-card *ngFor='let character of characters | async' [character]='character'></app-character-card>
+<div class="flex flex-row-reverse px-12">
+    <app-dropdown></app-dropdown>
 </div>
+<div class="grid grid-cols-2">
+    <app-character-card *ngFor='let character of (characters | async)?.results' [character]='character'>
+    </app-character-card>
+</div>
+<app-pagination [characterData]="characters"></app-pagination>

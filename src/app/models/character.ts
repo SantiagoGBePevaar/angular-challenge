@@ -13,3 +13,8 @@ export interface Character {
   events: GenericData<Data>;
   urls: Url[];
 }
+
+export interface CharacterData {
+  total: number;
+  results: Character[];
+}

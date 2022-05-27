@@ -1,4 +1,4 @@
 <div class="search-bar bg-white text-gray-400 h-10 md:flex hidden mr-10 justify-between">
-    <input class="ml-4" placeholder="Search character..." />
-    <img src="assets/search.png" class="m-1" />
+    <input class="ml-4" placeholder="Search character..." [(ngModel)]="searchTerm" (change)="search()" />
+    <div class="m-1 flex justify-center" (click)="search()"><img class="cursor-pointer" src="assets/search.png" /></div>
 </div>

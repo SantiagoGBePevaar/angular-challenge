@@ -1,6 +1,7 @@
+import { Character, CharacterData } from './../models/character';
 import { Observable, map } from 'rxjs';
+import { getResourceURI, getResourceURIWithParams } from './utils-service';
 
-import { Character } from './../models/character';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from './../../environments/environment';
@@ -9,12 +10,32 @@ import { environment } from './../../environments/environment';
   providedIn: 'root',
 })
 export class CharactersService {
-  private API_CHARACTERS = `https://gateway.marvel.com/v1/public/characters?apikey=${environment.apiKey}`;
+  private URI_CHARACTERS =
+    'https://gateway.marvel.com:443/v1/public/characters';
   constructor(private http: HttpClient) {}
 
-  public getAllCharacters(): Observable<Character[]> {
+  public getCharacters(
+    offset: number,
+    filter: string
+  ): Observable<CharacterData> {
+    const uri = getResourceURIWithParams(
+      `${this.URI_CHARACTERS}?limit=10&offset=${offset}&orderBy=${filter}`
+    );
     return this.http
-      .get(this.API_CHARACTERS)
-      .pipe(map<any, Character[]>((data: any) => data.data.results));
+      .get(uri)
+      .pipe(map<any, CharacterData>((data: any) => data.data));
+  }
+
+  public getCharactersByName(
+    name: string,
+    offset: number,
+    filter: string
+  ): Observable<CharacterData> {
+    const uri = getResourceURIWithParams(
+      `${this.URI_CHARACTERS}?limit=10&nameStartsWith=${name}&offset=${offset}&orderBy=${filter}`
+    );
+    return this.http
+      .get(uri)
+      .pipe(map<any, CharacterData>((data: any) => data.data));
   }
 }

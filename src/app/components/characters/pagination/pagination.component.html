@@ -1,0 +1,10 @@
+<div class="flex my-10 w-full justify-center">
+    <div class="navigation-button" [ngStyle]="{'background-color': page == 1 ? '#f4f4f4' : '#ffffff'}" *ngIf="page != 1"
+        (click)="getNewPage(0)">
+        <h6>1</h6>
+    </div>
+    <div class="navigation-button" [ngStyle]="{'background-color': page == i + 1 ? '#f4f4f4' : '#ffffff'}"
+        *ngFor="let i of paginationItems" (click)="getNewPage(i)">
+        <h6>{{i+1}}</h6>
+    </div>
+</div>

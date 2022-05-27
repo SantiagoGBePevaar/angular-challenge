@@ -1,0 +1,7 @@
+@import 'tailwindcss/components';
+
+@layer components {
+    .navigation-button {
+      @apply bg-white py-4 px-6 mx-2 cursor-pointer shadow-lg shadow-gray-300;
+    }
+  }
