@@ -12,10 +12,11 @@
         <div class="p-6 w-3/5">
             <div class=" mr-8 mt-4">
                 <h1 class="title text-gray-600">{{(comic | async)?.title}}</h1>
-                <p class="text-xs md:text-base">{{(comic | async)?.description?.length == 0 ? 'description not
-                    available'
+                <p class="text-xs md:text-base">{{(comic | async)?.description?.length == 0 ?
+                    'description not available'
                     :
                     (comic | async)?.description}}</p>
+                <button (click)="addComicFavorites()">hola</button>
             </div>
         </div>
     </div>

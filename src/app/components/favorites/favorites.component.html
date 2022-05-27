@@ -1,4 +1,4 @@
 <div class="grid grid-cols-1">
-    <app-favorites-card *ngFor='let favorite of favorites | async' [favorite]='favorite'>
+    <app-favorites-card *ngFor='let favorite of comicFav$ | async' [favorite]='favorite'>
     </app-favorites-card>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Comic } from './../../models/comic';
 import { ComicsService } from './../../services/comics.service';
+import { LocalStorageService } from './../../services/local-storage.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,14 +12,12 @@ import { Observable } from 'rxjs';
 })
 export class FavoritesComponent implements OnInit {
   favorites: Observable<Comic[]>;
+  comicFav$ = this.localStorageService.comicFav$;
 
-  constructor(private comicsService: ComicsService) {}
+  constructor(private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.getComics();
-  }
-
-  getComics() {
-    this.favorites = this.comicsService.getComics();
+    this.localStorageService.getFavoritesComics();
+    this.comicFav$ = this.localStorageService.comicFav$;
   }
 }
