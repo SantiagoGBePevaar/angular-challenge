@@ -1,0 +1,54 @@
+<div class="mr-10">
+    <div *ngIf="filterComics().length > 0" class="mb-4">
+        <h1 class="title">{{character.name}}</h1>
+        <h1 class="text-xl">{{character.description}}</h1>
+        <h2>Comics</h2>
+        <carousel>
+            <div *ngFor="let comic of filterComics()" class="carousel-cell">
+                <div *ngIf="comic.images.length > 0">
+                    <img [src]="comic.images[0].path +  '/standard_amazing.' + comic.images[0].extension">
+                    <h1>{{comic.title}}</h1>
+                </div>
+            </div>
+        </carousel>
+    </div>
+
+    <div *ngIf="filterStories().length > 0" class="mb-4">
+        <h2>Stories</h2>
+
+        <carousel>
+            <div *ngFor="let story of filterStories()" class="carousel-cell">
+                <div *ngIf="story.thumbnail">
+                    <img [src]="story.thumbnail.path +  '/standard_amazing.' + story.thumbnail.extension">
+                    <h1>{{story.title}}</h1>
+                </div>
+            </div>
+        </carousel>
+    </div>
+
+    <div *ngIf="filterEvents().length > 0" class="mb-4">
+        <h2>Events</h2>
+
+        <carousel>
+            <div *ngFor="let event of filterEvents()" class="carousel-cell">
+                <div *ngIf="event.thumbnail">
+                    <img [src]="event.thumbnail.path +  '/standard_amazing.' + event.thumbnail.extension">
+                    <h1>{{event.title}}</h1>
+                </div>
+            </div>
+        </carousel>
+    </div>
+
+    <div *ngIf="filterSeries().length > 0" class="mb-4">
+        <h2>Events</h2>
+
+        <carousel>
+            <div *ngFor="let serie of filterSeries()" class="carousel-cell">
+                <div *ngIf="serie.thumbnail">
+                    <img [src]="serie.thumbnail.path +  '/standard_amazing.' + serie.thumbnail.extension">
+                    <h1>{{serie.title}}</h1>
+                </div>
+            </div>
+        </carousel>
+    </div>
+</div>

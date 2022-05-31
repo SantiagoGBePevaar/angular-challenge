@@ -1,10 +1,9 @@
 import { Character, CharacterData } from './../models/character';
 import { Observable, map } from 'rxjs';
-import { getResourceURI, getResourceURIWithParams } from './utils-service';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from './../../environments/environment';
+import { getResourceURIWithParams } from './utils-service';
 
 @Injectable({
   providedIn: 'root',

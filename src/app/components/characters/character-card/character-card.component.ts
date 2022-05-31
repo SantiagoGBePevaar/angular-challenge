@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Story } from './../../../models/story';
 import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 
@@ -6,8 +7,8 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { StoriesService } from 'src/app/services/stories.service';
 import { Observable } from 'rxjs';
 import { ComicsComponent } from '../../comics/comics.component';
-import { Comic } from 'src/app/models/comic';
 import { Data } from 'src/app/models/shared_models';
+import { CharacterService } from 'src/app/services/character.service';
 
 @Component({
   selector: 'app-character-card',
@@ -44,7 +45,9 @@ export class CharacterDetail {
   constructor(
     @Inject(MAT_DIALOG_DATA) public character: Character,
     private storiesService: StoriesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private characterService: CharacterService,
+    private router: Router
   ) {}
 
   async loadStory(resourceURI: string) {
@@ -57,5 +60,13 @@ export class CharacterDetail {
 
   closeDialog() {
     this.dialog.closeAll();
+  }
+
+  async giveDetail() {
+    this.closeDialog();
+    this.characterService.character = this.character;
+    this.characterService.getCharacterInfo();
+    await new Promise((f) => setTimeout(f, 1000));
+    this.router.navigate(['detail']);
   }
 }
