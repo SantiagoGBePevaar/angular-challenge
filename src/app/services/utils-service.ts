@@ -1,9 +1,17 @@
 import { environment } from 'src/environments/environment';
 
 export const getResourceURI = (resourceURI: string) => {
-  return `${resourceURI}?apikey=${environment.apiKey}`;
+  const uri = verifyURI(resourceURI);
+  return `${uri}?apikey=${environment.apiKey}`;
 };
 
 export const getResourceURIWithParams = (resourceURI: string) => {
-  return `${resourceURI}&apikey=${environment.apiKey}`;
+  const uri = verifyURI(resourceURI);
+  return `${uri}&apikey=${environment.apiKey}`;
+};
+
+const verifyURI = (resourceURI: string): string => {
+  return resourceURI.includes('https')
+    ? resourceURI
+    : resourceURI.replace('http', 'https');
 };
