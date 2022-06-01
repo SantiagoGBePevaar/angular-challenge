@@ -4,20 +4,37 @@
             (click)="closeDialog()" />
     </div>
 
-    <div class="flex">
+    <div class="flex" *ngIf="favComic">
         <div class="w-2/5 flex justify-center">
             <img class=" w-3/5 m-8 shadow-lg shadow-gray-400"
-                [src]="(comic | async)?.thumbnail?.path +  '/standard_amazing.' + (comic | async)?.thumbnail?.extension" />
+                [src]="favComic?.thumbnail?.path +  '/standard_amazing.' + favComic?.thumbnail?.extension" />
         </div>
         <div class="p-6 w-3/5">
             <div class=" mr-8 mt-4">
-                <h1 class="title text-gray-600">{{(comic | async)?.title}}</h1>
-                <p class="text-xs md:text-base">{{(comic | async)?.description?.length == 0 ?
+                <h1 class="title text-gray-600">{{favComic?.title}}</h1>
+                <p class="text-xs md:text-base">{{favComic?.description?.length == 0 ?
                     'description not available'
                     :
-                    (comic | async)?.description}}</p>
-                <button (click)="addComicFavorites()">hola</button>
-            </div>
-        </div>
+                    favComic?.description}}</p>
+                    
+                    </div>
+                    </div>
+                    </div>
+                    <div class="flex justify-center h-14">
+                        <div class="w-2/4 flex justify-center items-center cursor-pointer" (click)="addComicFavorites()"
+                            [ngStyle]="{'background-color': (existsFav) ? '#322827' : '#dcdcdc'}">
+                            <img class="w-8 mr-4 select-none"
+                                [src]="existsFav ? 'assets/btn-favourites-primary.png' : 'assets/btn-favourites-default.png'" />
+                            <h1 class="mb-0 text-red-600 select-none">{{existsFav ? 'ADDED TO FAVORITES' : 'ADD TO FAVORITES'}}</h1>
+                        </div>
+                        <div class="w-2/4 flex justify-center items-center cursor-pointer" (click)="addComicCart()"
+                            [ngStyle]="{'background-color': (existsCart) ? '#322827' : '#dcdcdc'}">
+                            <img class="w-8 mr-4 select-none"
+                                [src]="existsCart ? 'assets/btn-favourites-primary.png' : 'assets/btn-favourites-default.png'" />
+                            <h1 class="mb-0 text-red-600 select-none">{{existsCart ? 'ADDED TO CART' : 'ADD TO CART'}}</h1>
+                        </div>
+                    </div>
+                    <div *ngIf="!favComic" class="flex justify-center pb-10">
+                        <mat-spinner></mat-spinner>
     </div>
 </div>

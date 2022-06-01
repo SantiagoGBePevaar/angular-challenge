@@ -13,23 +13,41 @@ import { Data } from 'src/app/models/shared_models';
   styleUrls: ['./comics.component.css'],
 })
 export class ComicsComponent implements OnInit {
-  comic: Observable<Comic>;
   favComic: Comic;
+  existsFav: boolean = false;
+  existsCart: boolean = false;
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public comicData: Data,
-    private comicsService: ComicsService,
+    @Inject(MAT_DIALOG_DATA) public comicData: Observable<Comic>,
     public dialog: MatDialog,
     private localStorageService: LocalStorageService
-  ) {
-    this.loadStory(comicData.resourceURI);
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.comic.subscribe((comic) => (this.favComic = comic));
-  }
+    this.comicData.subscribe((comic) => {
+      this.favComic = comic;
+      this.existsFav = this.localStorageService.existsFavorite(
+        this.favComic.id
+      );
 
-  async loadStory(resourceURI: string) {
-    this.comic = this.comicsService.getComic(resourceURI);
+      this.existsCart = this.localStorageService.existsCart(this.favComic.id);
+    });
+
+    this.localStorageService.comicFav$.subscribe((data) => {
+      if (this.favComic?.id) {
+        this.existsFav = !!data.find(
+          (fav: Comic) => fav.id === this.favComic.id
+        );
+      }
+    });
+
+    this.localStorageService.comicCart$.subscribe((data) => {
+      if (this.favComic?.id) {
+        this.existsCart = !!data.find(
+          (fav: Comic) => fav.id === this.favComic.id
+        );
+      }
+    });
   }
 
   closeDialog() {
@@ -38,5 +56,9 @@ export class ComicsComponent implements OnInit {
 
   addComicFavorites() {
     this.localStorageService.addOrRemoveFavorite(this.favComic);
+  }
+
+  addComicCart() {
+    this.localStorageService.addOrRemoveCart(this.favComic);
   }
 }

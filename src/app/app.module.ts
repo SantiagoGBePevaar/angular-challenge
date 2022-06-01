@@ -23,6 +23,7 @@ import { NgModule } from '@angular/core';
 import { PaginationComponent } from './components/characters/pagination/pagination.component';
 import { SearchBarComponent } from './components/shared/search-bar/search-bar.component';
 import { ToolbarComponent } from './components/shared/toolbar/toolbar.component';
+import { CartComponent } from './components/shared/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ToolbarComponent } from './components/shared/toolbar/toolbar.component'
     PaginationComponent,
     DropdownComponent,
     CharacterDetailComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

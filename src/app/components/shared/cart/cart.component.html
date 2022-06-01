@@ -1,0 +1,19 @@
+<div class="text-black my-4">
+    <h1 class="text-black title flex justify-center">Cart</h1>
+    <div class="grid grid-cols-1">
+        <div class="flex py-2" *ngFor='let favorite of comicCart$ | async'>
+            <img class="px-4" [src]="favorite.thumbnail.path +  '/portrait_uncanny.' + favorite.thumbnail.extension"
+                [width]="100" />
+            <p class="text-black text-sm flex justify-center items-center px-4">{{favorite.title}}</p>
+
+            <div class="flex w-full flex-row-reverse px-4 items-center">
+                <img src="assets/btn-delete.png" class="cursor-pointer" width="40" height="40"
+                    (click)="removeItemCart(favorite)" />
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center items-center h-20" *ngIf="(comicCart$ | async)?.length == 0">
+        <h1>Add some comic to your cart</h1>
+    </div>
+</div>

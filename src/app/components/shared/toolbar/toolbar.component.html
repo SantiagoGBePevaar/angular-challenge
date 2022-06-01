@@ -1,5 +1,11 @@
 <mat-toolbar class="flex justify-center md:justify-between">
     <img class="w-1/6 max-h-11 cursor-pointer" (click)="goHomePage()"
         src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Marvel_Logo.svg" />
-    <app-search-bar></app-search-bar>
+    <div class="flex">
+        <div class="flex justify-center items-center pr-5 cursor-pointer" (click)="openCart()">
+            <img src="assets/characters.png" />
+            <h1 class="">{{items}}</h1>
+        </div>
+        <app-search-bar></app-search-bar>
+    </div>
 </mat-toolbar>

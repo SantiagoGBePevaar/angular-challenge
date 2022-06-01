@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { ComicsComponent } from '../../comics/comics.component';
 import { Data } from 'src/app/models/shared_models';
 import { CharacterService } from 'src/app/services/character.service';
+import { ComicsService } from 'src/app/services/comics.service';
 
 @Component({
   selector: 'app-character-card',
@@ -17,7 +18,7 @@ import { CharacterService } from 'src/app/services/character.service';
 })
 export class CharacterCardComponent implements OnInit {
   @Input() character!: Character;
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private comicService: ComicsService) {}
 
   ngOnInit(): void {}
   openDialog() {
@@ -26,9 +27,10 @@ export class CharacterCardComponent implements OnInit {
     });
   }
 
-  openComic(comic: Data) {
+  async openComic(comic: Data) {
+    let comicData = this.comicService.getComic(comic.resourceURI);
     this.dialog.open(ComicsComponent, {
-      data: comic,
+      data: comicData,
     });
   }
 }

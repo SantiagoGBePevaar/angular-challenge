@@ -15,6 +15,7 @@ export class CharactersComponent implements OnInit {
   page: number = 1;
   searchTerm: string = '';
   filter: string = '';
+  loading: boolean = false;
 
   get offSet() {
     return this.page > 1 ? (this.page - 1) * 10 : 0;
